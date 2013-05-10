@@ -19,7 +19,11 @@ class Stevedore::Pdf
     def initialize(pdf)
       @pdf = pdf
       output = Stevedore.run("pdfinfo #{@pdf.file_path}")
-      @raw_metadata = YAML::load(output)
+      @raw_metadata = output.split("\n").reduce(Hash.new) do |metadata, line|
+        name, val = line.split(/: +/,2)
+        metadata[name] = val
+        metadata
+      end
     end
 
     def num_pages
