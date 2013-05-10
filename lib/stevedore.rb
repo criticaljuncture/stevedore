@@ -1,5 +1,3 @@
-require "rubygems" # TODO: remove me
-require "activesupport"
 require "tmpdir"
 
 module Stevedore

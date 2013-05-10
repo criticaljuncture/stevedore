@@ -9,7 +9,9 @@ class Stevedore::Pdf
     @metadata ||= Metadata.new(self)
   end
 
-  delegate :num_pages, :to => :metadata
+  def num_pages
+    metadata.num_pages
+  end
 
   class Metadata
     require 'yaml'
