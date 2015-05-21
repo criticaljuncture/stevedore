@@ -11,7 +11,7 @@ module Stevedore
     unless [expected_outcodes].flatten.include?($?.exitstatus)
       raise CommandLineError, "Error while running #{command}"
     end
-    output
+    output.force_encoding('UTF-8')
   end
 end
 
