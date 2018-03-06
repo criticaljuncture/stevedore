@@ -18,6 +18,12 @@ describe Stevedore::Pdf do
     end
   end
 
+  describe '#page_size' do
+    it "returns an array containing the width and height as integers" do
+      @pdf.page_size.should == [612,792]
+    end
+  end
+
   describe '#images' do
     it "should return 4 images" do
       @pdf.images.size.should == 4

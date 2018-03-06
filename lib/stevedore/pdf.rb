@@ -13,6 +13,10 @@ class Stevedore::Pdf
     metadata.num_pages
   end
 
+  def page_size
+    metadata.page_size
+  end
+
   class Metadata
     require 'yaml'
 
@@ -28,6 +32,11 @@ class Stevedore::Pdf
 
     def num_pages
       @raw_metadata["Pages"].to_i
+    end
+
+    def page_size
+      size_data = @raw_metadata["Page size"].split(' ')
+      [size_data[0].to_i, size_data[2].to_i]
     end
   end
 
